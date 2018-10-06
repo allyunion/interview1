@@ -1,6 +1,7 @@
 package main
 
 import (
+  "flag"
   "fmt"
   "net/http"
   "time"
@@ -13,8 +14,12 @@ func webTime(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+  portPtr := flag.Int("port", 8080, "port to use")
+  flag.Parse()
+  port := fmt.Sprintf(":%v", *portPtr)
+  fmt.Printf("Starting service on port %v...\n", *portPtr)
   http.HandleFunc("/", webTime)
-  if err := http.ListenAndServe(":8080", nil); err != nil {
+  if err := http.ListenAndServe(port, nil); err != nil {
     panic(err)
   }
 }
