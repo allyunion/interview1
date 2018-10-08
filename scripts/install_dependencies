@@ -1,0 +1,3 @@
+#!/bin/bash
+yum install -y golang
+go build -o /usr/local/sbin/webapp /tmp/webapp.go
