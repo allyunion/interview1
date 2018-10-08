@@ -1,6 +1,0 @@
-#!/bin/bash
-isExistApp = `pgrep webapp`
-if [[ -n  $isExistApp ]]; then
-    systemctl stop webapp
-fi
-
